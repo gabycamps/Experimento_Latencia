@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            text-align: center;
+            width: 300px;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #5a67d8;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .emoji {
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <div class="emoji">🔐</div>
+    <h2>Iniciar sesión</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Usuario" required>
+        <input type="password" name="password" placeholder="Contraseña" required>
+        <button type="submit">Ingresar</button>
+    </form>
+
+    {% if error %}
+    <p class="error">{{ error }}</p>
+    {% endif %}
+</div>
+
+</body>
+</html>
